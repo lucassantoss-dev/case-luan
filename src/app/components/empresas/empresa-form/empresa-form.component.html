@@ -1,0 +1,85 @@
+<h1 class="breadcrumb mt-4">Adicionar Nova Empresa</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    {{ empresa.id ? "Edição" : "Cadastro" }}
+  </li>
+</ol>
+
+<div class="container addEmpresa">
+  <form (ngSubmit)="salvar()" [formGroup]="empresaForm">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Nome: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="empresa.nome"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Documento: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="empresa.documento"
+            placeholder="00.000.000/0000-00"
+            mask="00.000.000/0000-00"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Site: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="empresa.site"
+            placeholder="(88) 99999-9999"
+            mask="(00) 00000-0000"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Descrição: </mat-label>
+          <textarea
+            rows="10" 
+            cols="40" 
+            maxlength="500"
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="empresa.description"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          *ngIf="!empresa.id"
+        >
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="submit" class="btn btn-primary" *ngIf="empresa.id">
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+        <button type="button" class="btn btn-danger" routerLink="/empresa-lista">
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

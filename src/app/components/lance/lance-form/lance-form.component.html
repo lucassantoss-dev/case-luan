@@ -1,0 +1,90 @@
+<h1 class="breadcrumb mt-4">Adicionar Novo Lance</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    {{ lance.id ? "Edição" : "Cadastro" }}
+  </li>
+</ol>
+
+<div class="container addOferta">
+  <form (ngSubmit)="salvar()" [formGroup]="lanceForm">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>De: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="lance.de"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Para: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="lance.para"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Valor Inicial: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="lance.valor_inicial"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Montate: </mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="lance.montante"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Quantidade Montate: </mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="lance.tipo_montante"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          *ngIf="!lance.id"
+        >
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="submit" class="btn btn-primary" *ngIf="lance.id">
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+        <button type="button" class="btn btn-danger" routerLink="/lance-lista">
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
